@@ -1,7 +1,13 @@
 import React from 'react';
 import './App.css';
-import Login from './components/Login';
 import styled from 'styled-components';
+import PrivateRoute from './components/PrivateRoute';
+import FriendCards from './components/FriendCards';
+import Login from './components/Login';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+
+
 
 const AppStyles = styled.div`
 
@@ -20,10 +26,17 @@ background: #65ccb8;
 function App() {
   return (
     <AppStyles>
+    <Router>
     <div className="App">
-     <Login />
+      <Switch>
+        <PrivateRoute path="/protected" component={FriendCards} />
+        <Route path="/login" component={Login} />
+        <Route component={Login} />
+      </Switch>
     </div>
+  </Router>
     </AppStyles>
+    
   );
 }
 
