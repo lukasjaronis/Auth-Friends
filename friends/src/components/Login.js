@@ -20,7 +20,6 @@ padding: 3rem;
     justify-content: center;
     align-items: center;
     width: 100%;
-   
     padding-bottom: 1rem;
     
 

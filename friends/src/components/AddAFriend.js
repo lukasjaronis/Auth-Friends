@@ -5,6 +5,80 @@ import TextField from "@material-ui/core/TextField";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
+const AddAFriendStyles = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+width: 35rem;
+height: 30rem;
+padding: 3rem;
+margin: 2rem;
+border: 1px solid black;
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 3rem;
+    
+
+    .header {
+   
+        background: #182628;
+        width: 100%;
+    
+      h1 {
+        
+        color: #fff;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+       
+      }
+    }
+
+    .inputOuterContainer {
+        padding: 0.6rem;
+        width: 100%;
+    
+        
+
+      .inputContainer {
+       
+        margin: 2rem;
+      }
+    }
+
+    button {
+      text-align: center;
+      width: 9rem;
+      height: 3rem;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: none;
+      border: 1px solid #fff;
+      color: #fff;
+      text-transform: uppercase;
+
+      &:hover {
+        background: #182628;
+      }
+    }
+
+    .loginDiv {
+        margin: 2rem;
+        letter-spacing: 3px;
+        font-weight: 600;
+        font-size: 2rem;
+        color: #fff;
+    }
+  }
+
+`;
+
 const useStyles = makeStyles(theme => ({
     root: {
       "& > *": {
@@ -45,9 +119,10 @@ const AddAFriend = () => {
     }
 
 return(
+    <AddAFriendStyles>
     <div className="mainContainer">
           <div className="header">
-            <h1>Sign In</h1>
+            <h1>Add a Friend</h1>
           </div>
 
           <form
@@ -100,6 +175,7 @@ return(
             </div>
           </form>
         </div>
+        </AddAFriendStyles>
 )
 
 }
