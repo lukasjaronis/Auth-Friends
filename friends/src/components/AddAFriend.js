@@ -128,7 +128,7 @@ return(
           <form
             onSubmit={onSubmit}
             className={useStyles.root}
-            Validate
+            noValidate
             autoComplete="off"
           >
             <div className="inputOuterContainer">
