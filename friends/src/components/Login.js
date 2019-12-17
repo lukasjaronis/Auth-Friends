@@ -41,8 +41,17 @@ class Login extends Component {
     
     return (
       <div>
-        <form className={useStyles.root} noValidate autoComplete="off">
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+        <form onSubmit={this.loggingIn} className={useStyles.root} noValidate autoComplete="off">
+        <div>
+        <TextField name="username" onChange={this.handleChange} value={this.state.credentials.username} id="outlined-basic" label="Username" variant="outlined" />
+        </div>
+        <div>
+        <TextField name="password" onChange={this.handleChange} value={this.state.credentials.password} id="outlined-basic" label="Password" variant="outlined" />
+        </div>
+        <div>
+        <button>Log In</button>
+        {this.state.isFetching && 'Logging In...'}
+        </div>
         </form>
       </div>
     );
