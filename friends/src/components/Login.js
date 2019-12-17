@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const LoginStyles = styled.div`
 
@@ -66,6 +67,14 @@ padding: 3rem;
         background: #182628;
       }
     }
+
+    .loginDiv {
+        margin: 2rem;
+        letter-spacing: 3px;
+        font-weight: 600;
+        font-size: 2rem;
+        color: #fff;
+    }
   }
 
 
@@ -103,6 +112,13 @@ class Login extends Component {
     this.setState({
       isFetching: true
     });
+    axiosWithAuth()
+    .post('/login', this.state.credentials)
+    .then(response => {
+        localStorage.setItem('token', response.data.payload);
+        this.props.history.push('/protected');
+    })
+    .catch(error => console.log(error));
   };
 
   render() {
@@ -147,7 +163,9 @@ class Login extends Component {
 
             <div>
               <button>Log In</button>
+              <div className="loginDiv">
               {this.state.isFetching && "Logging In..."}
+              </div>
             </div>
           </form>
         </div>
