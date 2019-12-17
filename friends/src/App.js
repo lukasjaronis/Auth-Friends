@@ -11,7 +11,7 @@ align-items: center;
 height: 100vh;
 margin: 0 auto;
 padding: 5rem;
-background: #EAE7DC;
+background: #65ccb8;
 
 `;
 

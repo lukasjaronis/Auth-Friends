@@ -1,37 +1,73 @@
 import React, { Component } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
 const LoginStyles = styled.div`
 
-height: 30rem;
-width: 30rem;
+
 display: flex;
 justify-content: center;
 align-items: center;
-border: 1px solid #d8c3a5;
--webkit-box-shadow: 5px 5px 15px 5px #fff; 
-box-shadow: 5px 5px 15px 5px #fff;
-border-radius: 3rem;
-background: #E98074;
+width: 35rem;
+height: 20rem;
+padding: 3rem;
 
-h1 {
-    color: #fff;
-    letter-spacing: 2px;
-}
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   
+    padding-bottom: 1rem;
+    
 
-.inputContainer {
-    margin: 2rem;
-}
+    .header {
+   
+        background: #182628;
+        width: 100%;
+    
+      h1 {
+        
+        color: #fff;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+       
+      }
+    }
 
-button {
-    width: 7rem;
-    height: 2.3rem;
-    font-size: 1rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
+    .inputOuterContainer {
+        padding: 0.6rem;
+        width: 100%;
+    
+        
+
+      .inputContainer {
+       
+        margin: 2rem;
+      }
+    }
+
+    button {
+      text-align: center;
+      width: 7rem;
+      height: 3rem;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: none;
+      border: 1px solid #fff;
+      color: #fff;
+      text-transform: uppercase;
+
+      &:hover {
+        background: #182628;
+      }
+    }
+  }
+
 
 `;
 
@@ -41,9 +77,8 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(1),
       width: 200,
     }
-  }
+  },
 }));
-
 
 class Login extends Component {
   state = {
@@ -71,26 +106,51 @@ class Login extends Component {
   };
 
   render() {
-    
     return (
-        <LoginStyles>
-      <div>
-      <div>
-      <h1>Sign In</h1>
-      </div>
-        <form onSubmit={this.loggingIn} className={useStyles.root} noValidate autoComplete="off">
-        <div className="inputContainer">
-        <TextField name="username" onChange={this.handleChange} value={this.state.credentials.username} id="outlined-basic" label="Username" variant="outlined" />
+      <LoginStyles>
+        <div className="mainContainer">
+          <div className="header">
+            <h1>Sign In</h1>
+          </div>
+
+          <form
+            onSubmit={this.loggingIn}
+            className={useStyles.root}
+            noValidate
+            autoComplete="off"
+          >
+            <div className="inputOuterContainer">
+              <div className="inputContainer">
+                <TextField
+                  name="username"
+                  onChange={this.handleChange}
+                  value={this.state.credentials.username}
+                  id="outlined-basic"
+                  label="Username"
+                  variant="outlined"
+                 
+                />
+              </div>
+
+              <div className="inputContainer">
+                <TextField
+                  name="password"
+                  onChange={this.handleChange}
+                  value={this.state.credentials.password}
+                  id="outlined-basic"
+                  label="Password"
+                  variant="outlined"
+                 
+                />
+              </div>
+            </div>
+
+            <div>
+              <button>Log In</button>
+              {this.state.isFetching && "Logging In..."}
+            </div>
+          </form>
         </div>
-        <div className="inputContainer">
-        <TextField name="password" onChange={this.handleChange} value={this.state.credentials.password} id="outlined-basic" label="Password" variant="outlined" />
-        </div>
-        <div>
-        <button>Log In</button>
-        {this.state.isFetching && 'Logging In...'}
-        </div>
-        </form>
-      </div>
       </LoginStyles>
     );
   }
