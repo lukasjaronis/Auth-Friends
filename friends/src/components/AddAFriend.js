@@ -105,7 +105,7 @@ const AddAFriend = () => {
         event.preventDefault();
         axiosWithAuth()
         .post('/friends', friendData)
-        .then(response => {
+        .then(() => {
             setFriendData(
                 {
                     ...friendData,
@@ -128,7 +128,7 @@ return(
           <form
             onSubmit={onSubmit}
             className={useStyles.root}
-            noValidate
+            Validate
             autoComplete="off"
           >
             <div className="inputOuterContainer">
@@ -140,6 +140,7 @@ return(
                   id="outlined-basic"
                   label="Name"
                   variant="outlined"
+                  required
                  
                 />
               </div>
@@ -152,6 +153,7 @@ return(
                 id="outlined-basic"
                 label="Age"
                 variant="outlined"
+                required
                  
                 />
               </div>
@@ -163,6 +165,7 @@ return(
               id="outlined-basic"
               label="Email"
               variant="outlined"
+              required
                
               />
             </div>
